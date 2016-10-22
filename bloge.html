@@ -1,0 +1,49 @@
+<html>  
+    <head>  
+          
+        <script type="text/Javascript">  
+              
+            // 定义 ArrayList 类型  
+            function ArrayList(array)  
+            {  
+                this._arr = typeof(array)=="string" ? array.split(",") : array;  
+            }  
+              
+            // 定义一个$each迭代函数，这个函数接受一个闭包作为参数  
+            ArrayList.prototype.$each = function(closure)  
+            {  
+                var ret = [];  
+                  
+                for(var i = 0; i < this._arr.length; i++)  
+                {  
+                        // 将调用闭包的计算结果推入堆栈中保存  
+                        ret.push(closure.call(this,this._arr[i]));  
+                }  
+                // 将保存着的结果的堆栈返回  
+                return ret;  
+            }  
+              
+              
+            // 向ArrayList中添加一个元素  
+            ArrayList.prototype.add = function(num)  
+            {  
+                return this.$each(function(a){return parseFloat(a)+parseFloat(num)});  
+            }  
+              
+            ArrayList.prototype.multiply = function(num)  
+            {  
+                return this.$each(function(a){return parseFloat(a)*parseFloat(num)});  
+            }  
+              
+        </script>  
+    </head>  
+      
+    <body>  
+        <input id="list" type="text" value="1,2,3,4"/><br/>  
+        <input id="num" type="text" value="2"/><br/>  
+        <input type="button" value="Add" onclick="result.value = (new ArrayList(list.value)).add(num.value)"/><br/>  
+        <input type="button" value="Multiply" onclick="result.value = (new ArrayList(list.value)).multiply(num.value)"/><br/>  
+        <input type="text" id="result"/>  
+          
+    </body>  
+</html>  
