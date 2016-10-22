@@ -1,5 +1,4 @@
 function $(){
-function $(){
 	return new Base();
 }
 
@@ -25,6 +24,10 @@ function Base(){
 //封装一些连缀操作的方法
 Base.prototype.css=function(attr,value){
 	for (var i = 0; i < this.elements.length; i++) {
+		//如果传入一个参数，返回attr对应的属性值
+		if (arguments.length==1) {
+			return this.elements[i].style[attr];
+		}
 		this.elements[i].style[attr]=value;
 	}
 	return this;
@@ -32,6 +35,9 @@ Base.prototype.css=function(attr,value){
 
 Base.prototype.html = function (str) {
 	for (var i = 0; i < this.elements.length; i ++) {
+		if (arguments.length==1) {
+			return this.elements[i].innerHTML;
+		}
 		this.elements[i].innerHTML = str;
 	}
 	return this;
