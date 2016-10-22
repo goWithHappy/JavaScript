@@ -26,7 +26,11 @@ Base.prototype.css=function(attr,value){
 	for (var i = 0; i < this.elements.length; i++) {
 		//如果传入一个参数，返回attr对应的属性值
 		if (arguments.length==1) {
-			return this.elements[i].style[attr];
+			if (typeof window.getComputedStyle!='undefined') {	//W3C
+				return window.getComputedStyle(this.elements[i],null)[attr];
+			}else if (typeof this.elements[i].CurrentStyle!='undefined') {	//IE
+				return this.elements[i].CurrentStyle[attr];
+			}	
 		}
 		this.elements[i].style[attr]=value;
 	}
