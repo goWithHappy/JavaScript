@@ -21,6 +21,31 @@ function Base(){
 	}
 }
 
+//获取CLASS节点数组
+Base.prototype.getClass = function (className, idName) {
+	var node = null;
+	if (arguments.length == 2) {
+		node = document.getElementById(idName);
+	} else {
+		node = document;
+	}
+	var all = node.getElementsByTagName('*');
+	for (var i = 0; i < all.length; i ++) {
+		if (all[i].className == className) {
+			this.elements.push(all[i]);
+		}
+	}
+	return this;
+}
+
+//获取某一个节点
+Base.prototype.getElement=function(num){
+	var element=this.elements[num];
+	this.elements=[];
+	this.elements[0]=element;
+	return this;
+}
+
 //封装一些连缀操作的方法
 Base.prototype.css=function(attr,value){
 	for (var i = 0; i < this.elements.length; i++) {
