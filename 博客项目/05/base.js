@@ -155,7 +155,28 @@ Base.prototype.click = function (fn) {
 	return this;
 }
 
+//设置元素居中
+Base.prototype.center=function(width,height)
+{
+	var top=(document.documentElement.clientHeight-250)/2;
+	var width=(document.documentElement.clientWidth-350)/2;
+	for(var i=0;i<this.elements.length;i++)
+	{
+		this.elements[i].style.top=top+'px';
+		this.elements[i].style.left=width+'px';
+	}
+	return this;
+}
 
+//触发浏览器窗口事件
+Base.prototype.resize=function(fn)
+{
+	for(var i=0;i<elements.length;i++)
+	{
+		elements[i].resize=fn;
+	}
+	return this;
+}
 
 
 
