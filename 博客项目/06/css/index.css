@@ -112,6 +112,7 @@ ul li{
 	margin:0;
 	padding: 0;
 	border-bottom: 1px solid #ccc;
+	cursor: move;
 }
 #login h2 img{
 	float:right;

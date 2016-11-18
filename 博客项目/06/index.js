@@ -42,4 +42,31 @@ window.onload=function()
 		$().getId('screen').css('display','block');
 		$().getId('login').css('display','block');
 	});
+
+	//实现登陆框的拖拽
+	var ODiv=document.getElementById('login');
+	// 拖拽流程
+	//1.先点下去
+	//2. 点下去的物体被选中
+	//3.抬起鼠标停止移动
+	ODiv.onmousedown=function(e)
+	{
+		var e=e||window.event;
+		//让鼠标点相对窗口位置不变
+		var diffX=e.clientX-ODiv.offsetLeft;
+		var diffY=e.clientY-ODiv.offsetTop;
+		//鼠标按下时可以开始进行拖动
+		document.onmousemove=function(e){
+			var e=e||window.event;
+			//保证相对窗口位置不变
+			ODiv.style.left=e.clientX-diffX+'px';
+			ODiv.style.top=e.clientY-diffY+'px';
+		}
+		//鼠标弹起时恢复原状
+		document.onmouseup=function(e)
+		{
+			document.onmousedown=null;
+			document.onmousemove=null;
+		}
+	}
 }

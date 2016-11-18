@@ -184,6 +184,7 @@ Base.prototype.lock=function(){
 	{
 		this.elements[i].style.width=document.documentElement.clientWidth+300+'px';
 		this.elements[i].style.height=document.documentElement.clientHeight+'px';
+		document.documentElement.style.overflow='hidden';
 	}
 	return this;
 }
@@ -193,6 +194,7 @@ Base.prototype.unlock=function()
 	for(var i=0;i<this.elements.length;i++)
 	{
 		this.elements[i].style.display='none';
+		document.documentElement.style.overflow='auto';
 	}
 	return this;
 }
