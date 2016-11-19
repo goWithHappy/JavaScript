@@ -1,4 +1,4 @@
-
+﻿
 
 //跨浏览器添加事件绑定
 function addEvent(obj, type, fn) {

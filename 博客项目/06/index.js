@@ -57,9 +57,14 @@ window.onload=function()
 		var diffY=e.clientY-ODiv.offsetTop;
 		//鼠标按下时可以开始进行拖动
 		document.onmousemove=function(e){
+			var left=e.clientX-diffX;
+			var top=e.clientY-diffY;
+			if(left<0){
+				left=0;
+			}
 			var e=e||window.event;
 			//保证相对窗口位置不变
-			ODiv.style.left=e.clientX-diffX+'px';
+			ODiv.style.left=left+'px';
 			ODiv.style.top=e.clientY-diffY+'px';
 		}
 		//鼠标弹起时恢复原状
