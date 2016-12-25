@@ -1,4 +1,5 @@
-﻿$().extend('drag', function (tags) {
+﻿//开始进行第七天的学习
+$().extend('drag', function (tags) {
 	for (var i = 0; i < this.elements.length; i ++) {
 		addEvent(this.elements[i], 'mousedown', function (e) {
 			if (trim(this.innerHTML).length == 0) e.preventDefault();
